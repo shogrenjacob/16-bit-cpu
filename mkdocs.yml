@@ -20,3 +20,5 @@ theme:
       toggle:
         icon: material/toggle-switch-off-outline
         name: Switch to light mode
+extra:
+  generator: false
