@@ -1,1 +1,22 @@
-site_name: My Docs
+site_name: 16-Bit CPU Docs
+theme:
+  name: material
+  extra_css:
+  - style.css
+  palette: 
+
+    # Palette toggle for light mode
+    - scheme: default
+      primary: red
+      accent: red
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - scheme: slate
+      primary: red
+      accent: red
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to light mode
