@@ -1,6 +1,8 @@
-site_name: 16-Bit CPU Docs
+site_name: Guin-16 Docs
 theme:
   name: material
+  logo: imgs/guin.png
+  favicon: imgs/guin.png
   extra_css:
   - style.css
   palette: 
