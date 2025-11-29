@@ -1,10 +1,9 @@
 site_name: Guin-16 Docs
+
 theme:
   name: material
   logo: imgs/guin.png
   favicon: imgs/guin.png
-  extra_css:
-  - style.css
   palette: 
 
     # Palette toggle for light mode
@@ -24,3 +23,6 @@ theme:
         name: Switch to light mode
 extra:
   generator: false
+
+extra_css:
+  - stylesheets/extra.css
