@@ -1,14 +1,14 @@
 # Instruction Set
 For any non-data word, the center two hex digits of data at a memory address represent a given opcode. The first hex digit (from left to right) represents the [addressing mode](addressing-modes.md) to use, and the last hex digit represents what flags to compare during instruction processing.
 
-> For example, x4021 in memory tells the CPU to perform a [LDA](addressing-modes.md) (0x02) using the next word in memory as an [absolute](addressing-modes.md) (0x4) address, and to check whether or not the [zero flag](addressing-modes.md) is raised (0x1).
+> For example, x4021 in memory tells the CPU to perform a [LDA](instruction-set.md/#lda) (0x02) using the next word in memory as an [Absolute](addressing-modes.md/#absolute) (0x4) address, and to check whether or not the [zero flag](flags.md/#zero) is raised (0x1).
 
 ## NOP
 Do nothing, but increment the program counter.
 
 | Addressing Mode | Opcode | Cycle Cost |
 |---|---|---|
-| [Implicit](addressing-modes.md) | x000 | 1 |
+| [Implicit](addressing-modes.md/#implicit) | x000 | 1 |
 
 **Processor Status Changes:**
 
@@ -23,13 +23,13 @@ Load the next data word into the Accumulator.
 
 | Addressing Mode | Opcode | Cycle Cost |
 |---|---|---|
-| [Immediate](addressing-modes.md) | x002 | 2 |
-| [PageAhead](addressing-modes.md) | x102 | 1 |
-| [PageBehind](addressing-modes.md) | x202 | 1 |
-| [Absolute](addressing-modes.md) | x402 | 1 |
-| [AbsoluteX](addressing-modes.md) | x502 | 1 |
-| [AbsoluteY](addressing-modes.md) | x602 | 1 |
-| [Indirect](addressing-modes.md) | x702 | 1 |
+| [Immediate](addressing-modes.md/#immediate) | x002 | 2 |
+| [PageAhead](addressing-modes.md/#pageahead) | x502 | 1 |
+| [PageBehind](addressing-modes.md/#pagebehind) | x202 | 1 |
+| [Absolute](addressing-modes.md/#absolute) | x402 | 3 |
+| [AbsoluteX](addressing-modes.md/#absolutex) | x102 | 3 |
+| [AbsoluteY](addressing-modes.md/#absolutey) | x602 | 3 |
+| [Indirect](addressing-modes.md/#indirect) | x702 | 1 |
 
 **Processor Status Changes:**
 
@@ -45,13 +45,13 @@ Load the next data word into the X Register.
 
 | Addressing Mode | Opcode | Cycle Cost |
 |---|---|---|
-| [Immediate](addressing-modes.md) | x006 | 2 |
-| [PageAhead](addressing-modes.md) | x106 | 1 |
-| [PageBehind](addressing-modes.md) | x206 | 1 |
-| [Absolute](addressing-modes.md) | x406 | 1 |
-| [AbsoluteX](addressing-modes.md) | x506 | 1 |
-| [AbsoluteY](addressing-modes.md) | x606 | 1 |
-| [Indirect](addressing-modes.md) | x706 | 1 |
+| [Immediate](addressing-modes.md/#immediate) | x006 | 2 |
+| [PageAhead](addressing-modes.md/#pageahead) | x506 | 1 |
+| [PageBehind](addressing-modes.md/#pagebehind) | x206 | 1 |
+| [Absolute](addressing-modes.md/#absolute) | x40c | 3 |
+| [AbsoluteX](addressing-modes.md/#absolutex) | x10c | 3 |
+| [AbsoluteY](addressing-modes.md/#absolutey) | x60c | 3 |
+| [Indirect](addressing-modes.md/#indirect) | x706 | 1 |
 
 **Processor Status Changes:**
 
@@ -66,13 +66,13 @@ Load the next data word into the Y Register.
 
 | Addressing Mode | Opcode | Cycle Cost |
 |---|---|---|
-| [Immediate](addressing-modes.md) | x00a | 2 |
-| [PageAhead](addressing-modes.md) | x10a | 1 |
-| [PageBehind](addressing-modes.md) | x20a | 1 |
-| [Absolute](addressing-modes.md) | x40a | 1 |
-| [AbsoluteX](addressing-modes.md) | x50a | 1 |
-| [AbsoluteY](addressing-modes.md) | x60a | 1 |
-| [Indirect](addressing-modes.md) | x70a | 1 |
+| [Immediate](addressing-modes.md/#immediate) | x00a | 2 |
+| [PageAhead](addressing-modes.md/#pageahead) | x50a | 1 |
+| [PageBehind](addressing-modes.md/#pagebehind) | x20a | 1 |
+| [Absolute](addressing-modes.md/#absolute) | x417 | 3 |
+| [AbsoluteX](addressing-modes.md/#absolutex) | x116 | 3 |
+| [AbsoluteY](addressing-modes.md/#absolutey) | x616 | 3 |
+| [Indirect](addressing-modes.md/#indirect) | x70a | 1 |
 
 **Processor Status Changes:**
 
@@ -87,13 +87,13 @@ Store the contents of the Accumulator at the processed memory address.
 
 | Addressing Mode | Opcode | Cycle Cost |
 |---|---|---|
-| [Immediate](addressing-modes.md) | x00e | 2 |
-| [PageAhead](addressing-modes.md) | x10e | 1 |
-| [PageBehind](addressing-modes.md) | x20e | 1 |
-| [Absolute](addressing-modes.md) | x40e | 1 |
-| [AbsoluteX](addressing-modes.md) | x50e | 1 |
-| [AbsoluteY](addressing-modes.md) | x60e | 1 |
-| [Indirect](addressing-modes.md) | x70e | 1 |
+| [Immediate](addressing-modes.md/#immediate) | x00e | 2 |
+| [PageAhead](addressing-modes.md/#pageahead) | x50e | 1 |
+| [PageBehind](addressing-modes.md/#pagebehind) | x20e | 1 |
+| [Absolute](addressing-modes.md/#absolute) | x421 | 3 |
+| [AbsoluteX](addressing-modes.md/#absolutex) | x120 | 3 |
+| [AbsoluteY](addressing-modes.md/#absolutey) | x620 | 3 |
+| [Indirect](addressing-modes.md/#indirect) | x70e | 1 |
 
 **Processor Status Changes:**
 
@@ -108,13 +108,13 @@ Store the contents of the X Register at the processed memory address.
 
 | Addressing Mode | Opcode | Cycle Cost |
 |---|---|---|
-| [Immediate](addressing-modes.md) | x012 | 2 |
-| [PageAhead](addressing-modes.md) | x112 | 1 |
-| [PageBehind](addressing-modes.md) | x212 | 1 |
-| [Absolute](addressing-modes.md) | x412 | 1 |
-| [AbsoluteX](addressing-modes.md) | x512 | 1 |
-| [AbsoluteY](addressing-modes.md) | x612 | 1 |
-| [Indirect](addressing-modes.md) | x712 | 1 |
+| [Immediate](addressing-modes.md/#immediate) | x012 | 2 |
+| [PageAhead](addressing-modes.md/#pageahead) | x512 | 1 |
+| [PageBehind](addressing-modes.md/#pagebehind) | x212 | 1 |
+| [Absolute](addressing-modes.md/#absolute) | x42b | 3 |
+| [AbsoluteX](addressing-modes.md/#absolutex) | x12a | 3 |
+| [AbsoluteY](addressing-modes.md/#absolutey) | x62a | 3 |
+| [Indirect](addressing-modes.md/#indirect) | x712 | 1 |
 
 **Processor Status Changes:**
 
@@ -129,13 +129,13 @@ Store the contents of the Y Register at the processed memory address.
 
 | Addressing Mode | Opcode | Cycle Cost |
 |---|---|---|
-| [Immediate](addressing-modes.md) | x016 | 2 |
-| [PageAhead](addressing-modes.md) | x116 | 1 |
-| [PageBehind](addressing-modes.md) | x216 | 1 |
-| [Absolute](addressing-modes.md) | x416 | 1 |
-| [AbsoluteX](addressing-modes.md) | x516 | 1 |
-| [AbsoluteY](addressing-modes.md) | x616 | 1 |
-| [Indirect](addressing-modes.md) | x716 | 1 |
+| [Immediate](addressing-modes.md/#immediate) | x016 | 2 |
+| [PageAhead](addressing-modes.md/#pageahead) | x516 | 1 |
+| [PageBehind](addressing-modes.md/#pagebehind) | x216 | 1 |
+| [Absolute](addressing-modes.md/#absolute) | x435 | 3 |
+| [AbsoluteX](addressing-modes.md/#absolutex) | x134 | 3 |
+| [AbsoluteY](addressing-modes.md/#absolutey) | x634 | 3 |
+| [Indirect](addressing-modes.md/#indirect) | x716 | 1 |
 
 **Processor Status Changes:**
 
@@ -150,13 +150,13 @@ Perform a bitwise AND operation on the Accumulator and a given word.
 
 | Addressing Mode | Opcode | Cycle Cost |
 |---|---|---|
-| [Immediate](addressing-modes.md) | x01a | 2 |
-| [PageAhead](addressing-modes.md) | x11a | 1 |
-| [PageBehind](addressing-modes.md) | x21a | 1 |
-| [Absolute](addressing-modes.md) | x41a | 1 |
-| [AbsoluteX](addressing-modes.md) | x51a | 1 |
-| [AbsoluteY](addressing-modes.md) | x61a | 1 |
-| [Indirect](addressing-modes.md) | x71a | 1 |
+| [Immediate](addressing-modes.md/#immediate) | x01a | 2 |
+| [PageAhead](addressing-modes.md/#pageahead) | x51a | 1 |
+| [PageBehind](addressing-modes.md/#pagebehind) | x21a | 1 |
+| [Absolute](addressing-modes.md/#absolute) | x43f | 3 |
+| [AbsoluteX](addressing-modes.md/#absolutex) | x13e | 3 |
+| [AbsoluteY](addressing-modes.md/#absolutey) | x63e | 3 |
+| [Indirect](addressing-modes.md/#indirect) | x71a | 1 |
 
 **Processor Status Changes:**
 
@@ -171,13 +171,13 @@ Perform a bitwise OR operation on the Accumulator and a given word.
 
 | Addressing Mode | Opcode | Cycle Cost |
 |---|---|---|
-| [Immediate](addressing-modes.md) | x01e | 2 |
-| [PageAhead](addressing-modes.md) | x11e | 1 |
-| [PageBehind](addressing-modes.md) | x21e | 1 |
-| [Absolute](addressing-modes.md) | x41e | 1 |
-| [AbsoluteX](addressing-modes.md) | x51e | 1 |
-| [AbsoluteY](addressing-modes.md) | x61e | 1 |
-| [Indirect](addressing-modes.md) | x71e | 1 |
+| [Immediate](addressing-modes.md/#immediate) | x01e | 2 |
+| [PageAhead](addressing-modes.md/#pageahead) | x51e | 1 |
+| [PageBehind](addressing-modes.md/#pagebehind) | x21e | 1 |
+| [Absolute](addressing-modes.md/#absolute) | x449 | 3 |
+| [AbsoluteX](addressing-modes.md/#absolutex) | x148 | 3 |
+| [AbsoluteY](addressing-modes.md/#absolutey) | x648 | 3 |
+| [Indirect](addressing-modes.md/#indirect) | x71e | 1 |
 
 **Processor Status Changes:**
 
@@ -192,7 +192,7 @@ Perform a bitwise NOT operation on the Accumulator.
 
 | Addressing Mode | Opcode | Cycle Cost |
 |---|---|---|
-| [Implicit](addressing-modes.md) | x022 | 1 |
+| [Implicit](addressing-modes.md/#implicit) | x022 | 1 |
 
 **Processor Status Changes:**
 
@@ -207,7 +207,7 @@ Shift all bits of the Accumulator one spot to the left. The most significant bit
 
 | Addressing Mode | Opcode | Cycle Cost |
 |---|---|---|
-| [Implicit](addressing-modes.md) | x026 | 1 |
+| [Implicit](addressing-modes.md/#implicit) | x026 | 1 |
 
 **Processor Status Changes:**
 
@@ -222,7 +222,7 @@ Shift all bits of the Accumulator one spot to the right. The least significant b
 
 | Addressing Mode | Opcode | Cycle Cost |
 |---|---|---|
-| [Implicit](addressing-modes.md) | x02a | 1 |
+| [Implicit](addressing-modes.md/#implicit) | x02a | 1 |
 
 **Processor Status Changes:**
 
@@ -237,7 +237,7 @@ Shift all bits of the Accumulator one spot to the left, the most significant bit
 
 | Addressing Mode | Opcode | Cycle Cost |
 |---|---|---|
-| [Implicit](addressing-modes.md) | x02e | 1 |
+| [Implicit](addressing-modes.md/#implicit) | x02e | 1 |
 
 **Processor Status Changes:**
 
@@ -252,7 +252,7 @@ Shift all bits of the Accumulator one spot to the right, the least significant b
 
 | Addressing Mode | Opcode | Cycle Cost |
 |---|---|---|
-| [Implicit](addressing-modes.md) | x032 | 1 |
+| [Implicit](addressing-modes.md/#implicit) | x032 | 1 |
 
 **Processor Status Changes:**
 
@@ -267,7 +267,7 @@ Increment the contents of the Accumulator by 1.
 
 | Addressing Mode | Opcode | Cycle Cost |
 |---|---|---|
-| [Implicit](addressing-modes.md) | x036 | 1 |
+| [Implicit](addressing-modes.md/#implicit) | x036 | 1 |
 
 **Processor Status Changes:**
 
@@ -282,7 +282,7 @@ Increment the contents of the X Register by 1.
 
 | Addressing Mode | Opcode | Cycle Cost |
 |---|---|---|
-| [Implicit](addressing-modes.md) | x03a | 1 |
+| [Implicit](addressing-modes.md/#implicit) | x03a | 1 |
 
 **Processor Status Changes:**
 
@@ -297,7 +297,7 @@ Increment the contents of the Y Register by 1.
 
 | Addressing Mode | Opcode | Cycle Cost |
 |---|---|---|
-| [Implicit](addressing-modes.md) | x03e | 1 |
+| [Implicit](addressing-modes.md/#implicit) | x03e | 1 |
 
 **Processor Status Changes:**
 
@@ -312,7 +312,7 @@ Increment the contents of the page register by 1.
 
 | Addressing Mode | Opcode | Cycle Cost |
 |---|---|---|
-| [Implicit](addressing-modes.md) | x042 | 1 |
+| [Implicit](addressing-modes.md/#implicit) | x042 | 1 |
 
 **Processor Status Changes:**
 
@@ -327,13 +327,13 @@ Add a given value to the Accumulator. Generate a carry bit if the addition resul
 
 | Addressing Mode | Opcode | Cycle Cost |
 |---|---|---|
-| [Immediate](addressing-modes.md) | x046 | 2 |
-| [PageAhead](addressing-modes.md) | x146 | 1 |
-| [PageBehind](addressing-modes.md) | x246 | 1 |
-| [Absolute](addressing-modes.md) | x446 | 1 |
-| [AbsoluteX](addressing-modes.md) | x546 | 1 |
-| [AbsoluteY](addressing-modes.md) | x646 | 1 |
-| [Indirect](addressing-modes.md) | x746 | 1 |
+| [Immediate](addressing-modes.md/#immediate) | x046 | 2 |
+| [PageAhead](addressing-modes.md/#pageahead) | x546 | 1 |
+| [PageBehind](addressing-modes.md/#pagebehind) | x246 | 1 |
+| [Absolute](addressing-modes.md/#absolute) | x453 | 3 |
+| [AbsoluteX](addressing-modes.md/#absolutex) | x152 | 3 |
+| [AbsoluteY](addressing-modes.md/#absolutey) | x652 | 3 |
+| [Indirect](addressing-modes.md/#indirect) | x746 | 1 |
 
 **Processor Status Changes:**
 
@@ -348,13 +348,13 @@ Subtract a given value from the Accumulator.
 
 | Addressing Mode | Opcode | Cycle Cost |
 |---|---|---|
-| [Immediate](addressing-modes.md) | x04a | 2 |
-| [PageAhead](addressing-modes.md) | x14a | 1 |
-| [PageBehind](addressing-modes.md) | x24a | 1 |
-| [Absolute](addressing-modes.md) | x44a | 1 |
-| [AbsoluteX](addressing-modes.md) | x54a | 1 |
-| [AbsoluteY](addressing-modes.md) | x64a | 1 |
-| [Indirect](addressing-modes.md) | x74a | 1 |
+| [Immediate](addressing-modes.md/#immediate) | x04a | 2 |
+| [PageAhead](addressing-modes.md/#pageahead) | x54a | 1 |
+| [PageBehind](addressing-modes.md/#pagebehind) | x24a | 1 |
+| [Absolute](addressing-modes.md/#absolute) | x45d | 3 |
+| [AbsoluteX](addressing-modes.md/#absolutex) | x15c | 3 |
+| [AbsoluteY](addressing-modes.md/#absolutey) | x65c | 3 |
+| [Indirect](addressing-modes.md/#indirect) | x74a | 1 |
 
 **Processor Status Changes:**
 
@@ -369,7 +369,7 @@ Decrement the contents of the page register by 1.
 
 | Addressing Mode | Opcode | Cycle Cost |
 |---|---|---|
-| [Implicit](addressing-modes.md) | x04e | 1 |
+| [Implicit](addressing-modes.md/#implicit) | x04e | 1 |
 
 **Processor Status Changes:**
 
@@ -384,13 +384,13 @@ Jump to the memory location given by the processed data word.
 
 | Addressing Mode | Opcode | Cycle Cost |
 |---|---|---|
-| [Immediate](addressing-modes.md) | x052 | 2 |
-| [PageAhead](addressing-modes.md) | x152 | 1 |
-| [PageBehind](addressing-modes.md) | x252 | 1 |
-| [Absolute](addressing-modes.md) | x452 | 1 |
-| [AbsoluteX](addressing-modes.md) | x552 | 1 |
-| [AbsoluteY](addressing-modes.md) | x652 | 1 |
-| [Indirect](addressing-modes.md) | x752 | 1 |
+| [Immediate](addressing-modes.md/#immediate) | x052 | 2 |
+| [PageAhead](addressing-modes.md/#pageahead) | x552 | 1 |
+| [PageBehind](addressing-modes.md/#pagebehind) | x252 | 1 |
+| [Absolute](addressing-modes.md/#absolute) | x467 | 3 |
+| [AbsoluteX](addressing-modes.md/#absolutex) | x166 | 3 |
+| [AbsoluteY](addressing-modes.md/#absolutey) | x666 (Spooky!) | 3 |
+| [Indirect](addressing-modes.md/#indirect) | x752 | 1 |
 
 **Processor Status Changes:**
 
@@ -406,7 +406,7 @@ Jump to the start of the page given by the page register.
 
 | Addressing Mode | Opcode | Cycle Cost |
 |---|---|---|
-| [Implicit](addressing-modes.md) | x056 | 1 |
+| [Implicit](addressing-modes.md/#implicit) | x056 | 1 |
 
 **Processor Status Changes:**
 
@@ -424,13 +424,7 @@ Jump to the given memory address only if the Accumulator = 0.
 
 | Addressing Mode | Opcode | Cycle Cost |
 |---|---|---|
-| [Immediate](addressing-modes.md) | x05a1 | 2 |
-| [PageAhead](addressing-modes.md) | x15a1 | 1 |
-| [PageBehind](addressing-modes.md) | x25a1 | 1 |
-| [Absolute](addressing-modes.md) | x45a1 | 1 |
-| [AbsoluteX](addressing-modes.md) | x55a1 | 1 |
-| [AbsoluteY](addressing-modes.md) | x65a1 | 1 |
-| [Indirect](addressing-modes.md) | x75a1 | 1 |
+| [Immediate](addressing-modes.md/#immediate) | x05a1 | 2 |
 
 **Processor Status Changes:**
 
@@ -445,13 +439,7 @@ Jump to the given memory address only if the X Register = 0.
 
 | Addressing Mode | Opcode | Cycle Cost |
 |---|---|---|
-| [Immediate](addressing-modes.md) | x05a1 | 2 |
-| [PageAhead](addressing-modes.md) | x15a1 | 1 |
-| [PageBehind](addressing-modes.md) | x25a1 | 1 |
-| [Absolute](addressing-modes.md) | x45a1 | 1 |
-| [AbsoluteX](addressing-modes.md) | x55a1 | 1 |
-| [AbsoluteY](addressing-modes.md) | x65a1 | 1 |
-| [Indirect](addressing-modes.md) | x75a1 | 1 |
+| [Immediate](addressing-modes.md/#immediate) | x05a1 | 2 |
 
 **Processor Status Changes:**
 
@@ -466,13 +454,7 @@ Jump to the given memory address only if the Y Register = 0.
 
 | Addressing Mode | Opcode | Cycle Cost |
 |---|---|---|
-| [Immediate](addressing-modes.md) | x05e1 | 2 |
-| [PageAhead](addressing-modes.md) | x15e1 | 1 |
-| [PageBehind](addressing-modes.md) | x25e1 | 1 |
-| [Absolute](addressing-modes.md) | x45e1 | 1 |
-| [AbsoluteX](addressing-modes.md) | x55e1 | 1 |
-| [AbsoluteY](addressing-modes.md) | x65e1 | 1 |
-| [Indirect](addressing-modes.md) | x75e1 | 1 |
+| [Immediate](addressing-modes.md/#immediate) | x05e1 | 2 |
 
 **Processor Status Changes:**
 

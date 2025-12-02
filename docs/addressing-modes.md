@@ -12,14 +12,14 @@ For many instructions in the Guin-16, there is not extra data required to perfor
 If an instruction uses immediate mode, it will use the word in the memory address directly ahead of it as a data word. Although Immediate shares an addressing code with Implicit, the type of instruction will determine which is used. An instruction using an implicit addressing mode will already have completed before an immediate instruction processes.
 
 ## PageAhead
-**Addressing Code: x1**
+**Addressing Code: x5**
 
-PageAhead mode tells the CPU to fetch the address exactly one page ahead the current instruction's address to use as a data word.
+PageAhead mode tells the CPU to fetch the address exactly x pages ahead the current instruction's address to use as a data word, where x is specified by the [Page Register](registers.md/#page-register)
 
 ## PageBehind
 **Addressing Code: x2**
 
-PageBehind mode tells the CPU to fetch the address exactly one page behind the current instruction's address to use as a data word.
+PageAhead mode tells the CPU to fetch the address exactly x pages behind the current instruction's address to use as a data word, where x is specified by the [Page Register](registers.md/#page-register)
 
 ## Absolute
 **Addressing Code: x4**
@@ -27,7 +27,7 @@ PageBehind mode tells the CPU to fetch the address exactly one page behind the c
 Absolute mode tells the CPU that the next word in memory is the address to the actual data to be used by the instruction.
 
 ## AbsoluteX
-**Addressing Code x5**
+**Addressing Code x1**
 
 AbsoluteX mode tells the CPU to get the next word in memory and add it to the X Register to get the address of the data to use in the instruction.
 

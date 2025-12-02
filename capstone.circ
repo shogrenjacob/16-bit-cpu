@@ -133,26 +133,6 @@
     <comp lib="0" loc="(1150,2550)" name="Tunnel">
       <a name="label" val="NEGATIVE_FLAG_TRUE"/>
     </comp>
-    <comp lib="0" loc="(1150,950)" name="Tunnel">
-      <a name="facing" val="east"/>
-      <a name="label" val="CLK"/>
-    </comp>
-    <comp lib="0" loc="(1160,990)" name="Tunnel">
-      <a name="facing" val="east"/>
-      <a name="label" val="INC_SP"/>
-    </comp>
-    <comp lib="0" loc="(1180,860)" name="Tunnel">
-      <a name="facing" val="east"/>
-      <a name="label" val="RESET_SP"/>
-    </comp>
-    <comp lib="0" loc="(1180,890)" name="Tunnel">
-      <a name="facing" val="east"/>
-      <a name="label" val="LOAD_SP"/>
-    </comp>
-    <comp lib="0" loc="(1180,920)" name="Tunnel">
-      <a name="facing" val="east"/>
-      <a name="label" val="MODE_SP"/>
-    </comp>
     <comp lib="0" loc="(120,1080)" name="Tunnel">
       <a name="facing" val="east"/>
       <a name="label" val="EDI"/>
@@ -410,9 +390,6 @@
       <a name="facing" val="east"/>
       <a name="label" val="READ_MAR"/>
     </comp>
-    <comp lib="0" loc="(1560,960)" name="Bit Extender">
-      <a name="type" val="zero"/>
-    </comp>
     <comp lib="0" loc="(1570,1610)" name="Tunnel">
       <a name="label" val="RESET_PC"/>
     </comp>
@@ -430,10 +407,6 @@
       <a name="width" val="16"/>
     </comp>
     <comp lib="0" loc="(1600,1730)" name="Constant"/>
-    <comp lib="0" loc="(1610,970)" name="Tunnel">
-      <a name="facing" val="north"/>
-      <a name="label" val="READ_SP"/>
-    </comp>
     <comp lib="0" loc="(1660,1220)" name="Tunnel">
       <a name="label" val="READ_ALU_AND"/>
     </comp>
@@ -469,10 +442,6 @@
     </comp>
     <comp lib="0" loc="(1660,1550)" name="Tunnel">
       <a name="label" val="READ_ALU_INCP"/>
-    </comp>
-    <comp lib="0" loc="(1660,960)" name="Tunnel">
-      <a name="label" val="DATA_BUS_OUT"/>
-      <a name="width" val="16"/>
     </comp>
     <comp lib="0" loc="(1680,1580)" name="Tunnel">
       <a name="label" val="READ_ALU_NOT"/>
@@ -1201,7 +1170,6 @@
     <comp lib="1" loc="(1200,2130)" name="OR Gate">
       <a name="width" val="5"/>
     </comp>
-    <comp lib="1" loc="(1220,970)" name="AND Gate"/>
     <comp lib="1" loc="(1300,290)" name="NOT Gate"/>
     <comp lib="1" loc="(1360,270)" name="OR Gate"/>
     <comp lib="1" loc="(1400,1890)" name="Buffer"/>
@@ -1222,9 +1190,6 @@
     <comp lib="1" loc="(1450,1790)" name="Buffer"/>
     <comp lib="1" loc="(1550,1610)" name="Buffer"/>
     <comp lib="1" loc="(1550,1620)" name="Buffer"/>
-    <comp lib="1" loc="(1620,960)" name="Controlled Buffer">
-      <a name="width" val="16"/>
-    </comp>
     <comp lib="1" loc="(1680,1700)" name="Buffer"/>
     <comp lib="1" loc="(1680,1710)" name="Buffer"/>
     <comp lib="1" loc="(1680,1720)" name="Buffer"/>
@@ -1471,8 +1436,28 @@
 10 7806 10 7809 10 380a 10 580b
 10 980c 10 7807 10 7808 10 800e
 10 1840 10 1040 10 c40 10 440
-10 840 10 462*0 280 1840 7800 340
-10 510*0 10
+10 840 10 78*0 6680 1847 7800 340
+10 6680 1847 3800 340 10 6680 1847
+5800 340 10 6680 1847 cc00 340 10
+6680 1847 c400 340 10 6680 1847 c800
+340 10 6680 1847 7801 340 10 6680
+1847 7802 340 10 6680 1847 7807 340
+10 6680 1847 7808 340 10 6680 1847
+1840 340 10 329*0 280 1840 7800 340
+10 280 1840 3800 340 10 280 1840
+5800 340 10 280 1840 cc00 340 10
+280 1840 c400 340 10 280 1840 c800
+340 10 280 1840 7801 340 10 280
+1840 7802 340 10 280 1840 7807 340
+10 280 1840 7808 340 10 280 1840
+1840 10 280 1840 c40 340 10 197*0
+6a80 1847 7800 340 10 6a80 1847 3800
+340 10 6a80 1847 5800 340 10 6a80
+1847 cc00 340 10 6a80 1847 c400 340
+10 6a80 1847 c800 340 10 6a80 1847
+7801 340 10 6a80 1847 7802 340 10
+6a80 1847 7807 340 10 6a80 1847 7808
+340 10 6a80 1847 1840 10 205*0 10
 </a>
       <a name="dataWidth" val="16"/>
       <a name="label" val="INS_Lookup_Table"/>
@@ -1482,9 +1467,6 @@
       <a name="appearance" val="logisim_evolution"/>
       <a name="label" val="Memory_Address_Register"/>
       <a name="width" val="16"/>
-    </comp>
-    <comp lib="4" loc="(1280,850)" name="Counter">
-      <a name="appearance" val="logisim_evolution"/>
     </comp>
     <comp lib="4" loc="(1390,190)" name="RAM">
       <a name="addrWidth" val="16"/>
@@ -1556,6 +1538,10 @@
     <comp lib="8" loc="(1725,745)" name="Text">
       <a name="text" val="Create a toggle between pc and another value that denotes an address to jump to for relative addressing"/>
     </comp>
+    <comp lib="8" loc="(1763,1646)" name="Text">
+      <a name="color" val="#0000ff"/>
+      <a name="text" val="Program Counter Group"/>
+    </comp>
     <comp lib="8" loc="(1845,1370)" name="Text">
       <a name="color" val="#0000ff"/>
       <a name="text" val="ALU Group"/>
@@ -1563,10 +1549,6 @@
     <comp lib="8" loc="(1910,1720)" name="Text">
       <a name="color" val="#0000ff"/>
       <a name="text" val="Stack Pointer Group"/>
-    </comp>
-    <comp lib="8" loc="(2020,1830)" name="Text">
-      <a name="color" val="#0000ff"/>
-      <a name="text" val="Program Counter Group"/>
     </comp>
     <comp lib="8" loc="(310,1635)" name="Text">
       <a name="color" val="#0000ff"/>
@@ -1636,24 +1618,10 @@
     <wire from="(1140,200)" to="(1390,200)"/>
     <wire from="(1140,70)" to="(1140,200)"/>
     <wire from="(1140,70)" to="(1270,70)"/>
-    <wire from="(1150,950)" to="(1170,950)"/>
-    <wire from="(1160,990)" to="(1170,990)"/>
-    <wire from="(1180,860)" to="(1190,860)"/>
-    <wire from="(1180,890)" to="(1190,890)"/>
-    <wire from="(1180,920)" to="(1190,920)"/>
-    <wire from="(1190,860)" to="(1190,870)"/>
-    <wire from="(1190,870)" to="(1280,870)"/>
-    <wire from="(1190,880)" to="(1190,890)"/>
-    <wire from="(1190,880)" to="(1280,880)"/>
-    <wire from="(1190,900)" to="(1190,920)"/>
-    <wire from="(1190,900)" to="(1280,900)"/>
     <wire from="(120,1080)" to="(220,1080)"/>
     <wire from="(1200,2130)" to="(1210,2130)"/>
     <wire from="(1210,2100)" to="(1210,2130)"/>
     <wire from="(1210,2130)" to="(1240,2130)"/>
-    <wire from="(1220,970)" to="(1230,970)"/>
-    <wire from="(1230,930)" to="(1230,970)"/>
-    <wire from="(1230,930)" to="(1280,930)"/>
     <wire from="(1240,120)" to="(1270,120)"/>
     <wire from="(1240,2130)" to="(1240,2230)"/>
     <wire from="(1240,2230)" to="(1240,2250)"/>
@@ -1764,7 +1732,6 @@
     <wire from="(1470,1790)" to="(1470,1830)"/>
     <wire from="(1470,1830)" to="(1490,1830)"/>
     <wire from="(1470,40)" to="(1470,50)"/>
-    <wire from="(1470,960)" to="(1520,960)"/>
     <wire from="(1480,1760)" to="(1480,1770)"/>
     <wire from="(1480,1770)" to="(1490,1770)"/>
     <wire from="(1480,1780)" to="(1480,1800)"/>
@@ -1821,7 +1788,6 @@
     <wire from="(1560,1640)" to="(1570,1640)"/>
     <wire from="(1560,2140)" to="(1560,2190)"/>
     <wire from="(1560,2140)" to="(1790,2140)"/>
-    <wire from="(1560,960)" to="(1600,960)"/>
     <wire from="(1570,1310)" to="(1570,1440)"/>
     <wire from="(1570,1310)" to="(1660,1310)"/>
     <wire from="(1570,2150)" to="(1570,2220)"/>
@@ -1863,7 +1829,6 @@
     <wire from="(1620,1660)" to="(1620,1690)"/>
     <wire from="(1620,2200)" to="(1620,2370)"/>
     <wire from="(1620,2200)" to="(1790,2200)"/>
-    <wire from="(1620,960)" to="(1660,960)"/>
     <wire from="(1630,1490)" to="(1630,1500)"/>
     <wire from="(1630,1490)" to="(1660,1490)"/>
     <wire from="(1630,1510)" to="(1630,1520)"/>
