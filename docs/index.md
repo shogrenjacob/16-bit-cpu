@@ -38,6 +38,11 @@ The Arithmetic Logic Unit (ALU) is responsible for performing arithmetical opera
 
 <img src="imgs/alu.png" alt="Program Counter" style="height: auto; width: 50%;"></img>
 
+### Stack Pointer
+The Stack Pointer tells the CPU at what address the top of the stack is. The stack is a reserved page of memory to store data in a stack data structure. If the stack pointer falls below zero it will wrap around to _xFF_ and vice versa if it overflows past _xFF_.
+
+<img src="imgs/sp.png" alt="Stack Pointer" style="height: auto; width: 50%;"></img>
+
 ## References
 I used the following resources in researching and building this project:
 

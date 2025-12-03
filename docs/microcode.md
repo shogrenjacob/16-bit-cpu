@@ -38,14 +38,16 @@ The read group is the group of microinstructions that includes signals to enable
 | rdp | 100 | Read value from the Page Register into the bus. |
 | rdi | 101 | Read value from Instruction Register into the bus. |
 | rdm | 110 | Read value from memory into the bus. |
+| rsp | 111 | Read address pointed to by the Stack Pointer. |
 
-## MAR
-The MAR group represents actions that can be performed on the Memory Address Register besides reading and writing. The MAR group requires 3 bits to hold the entire set.
+## Indirect
+The indirect group denotes microcode instructions that assist in operations that use indirect addressing. The Indirect group requires 3 bits to hold all microinstructions.
 
 | Microinstruction | Opcode (binary) | Usage | 
 |---|---|---|
 | apg | 001 | Add page to the current memory address. |
 | spg | 010 | Subtract page from the current memory address. |
+| isp | 100 | Increment the Stack Pointer by 1. |
 | wma | 101 | Write to the MAR. |
 | rma | 110 | Read from the MAR. |
 
@@ -84,3 +86,4 @@ The PC group represents actions that can be performed by the Program Counter. Th
 | rip | 1100 | Read output of increment Page Register operation. |
 | ran | 1101 | Read output of logical NOT operation. |
 | rdp | 1110 | Read output of decrement Page Register operation. |
+| msp | 1111 | Change the mode of the stack pointer from increment to decrement. |

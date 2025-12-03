@@ -429,7 +429,7 @@ Jump to the given memory address only if the X Register = 0.
 
 | Addressing Mode | Opcode | Cycle Cost |
 |---|---|---|
-| [Immediate](addressing-modes.md/#immediate) | x05a1 | 2 |
+| [Immediate](addressing-modes.md/#immediate) | x05e1 | 2 |
 
 **Processor Status Changes:**
 
@@ -444,7 +444,97 @@ Jump to the given memory address only if the Y Register = 0.
 
 | Addressing Mode | Opcode | Cycle Cost |
 |---|---|---|
-| [Immediate](addressing-modes.md/#immediate) | x05e1 | 2 |
+| [Immediate](addressing-modes.md/#immediate) | x0621 | 2 |
+
+**Processor Status Changes:**
+
+- Carry: No change.
+- Zero: No change.
+- Overflow: No change.
+- Parity: No change.
+- Negative: No change.
+
+## PSHX
+Push the value at register X onto the stack.
+
+| Addressing Mode | Opcode | Cycle Cost |
+|---|---|---|
+| [Immediate](addressing-modes.md/#immediate) | x0660 | 3 |
+
+**Processor Status Changes:**
+
+- Carry: No change.
+- Zero: No change.
+- Overflow: No change.
+- Parity: No change.
+- Negative: No change.
+
+## PSHY
+Push the value at register Y onto the stack.
+
+| Addressing Mode | Opcode | Cycle Cost |
+|---|---|---|
+| [Immediate](addressing-modes.md/#immediate) | x0700 | 3 |
+
+**Processor Status Changes:**
+
+- Carry: No change.
+- Zero: No change.
+- Overflow: No change.
+- Parity: No change.
+- Negative: No change.
+
+## PSHA
+Push the value at register X onto the stack.
+
+| Addressing Mode | Opcode | Cycle Cost |
+|---|---|---|
+| [Immediate](addressing-modes.md/#immediate) | x07a0 | 3 |
+
+**Processor Status Changes:**
+
+- Carry: No change.
+- Zero: No change.
+- Overflow: No change.
+- Parity: No change.
+- Negative: No change.
+
+## PLX
+Pull a value from the top of the stack and write it to the X register.
+
+| Addressing Mode | Opcode | Cycle Cost |
+|---|---|---|
+| [Immediate](addressing-modes.md/#immediate) | x0840 | 3 |
+
+**Processor Status Changes:**
+
+- Carry: No change.
+- Zero: No change.
+- Overflow: No change.
+- Parity: No change.
+- Negative: No change.
+
+## PLY
+Pull a value from the top of the stack and write it to the Y register.
+
+| Addressing Mode | Opcode | Cycle Cost |
+|---|---|---|
+| [Immediate](addressing-modes.md/#immediate) | x08e0 | 3 |
+
+**Processor Status Changes:**
+
+- Carry: No change.
+- Zero: No change.
+- Overflow: No change.
+- Parity: No change.
+- Negative: No change.
+
+## PLA
+Pull a value from the top of the stack and write it to the Accumulator.
+
+| Addressing Mode | Opcode | Cycle Cost |
+|---|---|---|
+| [Immediate](addressing-modes.md/#immediate) | x0980 | 3 |
 
 **Processor Status Changes:**
 
