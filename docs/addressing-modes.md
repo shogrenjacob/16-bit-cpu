@@ -39,5 +39,5 @@ AbsoluteY mode tells the CPU to get the next word in memory and add it to the Y 
 ## Indirect
 **Addressing Code x7**
 
-Indirect mode tells the CPU to use the next word as an address to a word in memory. This word is the address of the _actual_ word of data to use. 
+Indirect mode tells the CPU to use the next word as an address to a word in memory. This word is the address of the _actual_ word of data to use. This addressing mode is only used by the [JMP](instruction-set.md/#jmp) instruction.
 > Note: You can think of this as using absolute mode twice, once to get the address to use, and then again to get the actual data.

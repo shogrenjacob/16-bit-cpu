@@ -2,9 +2,9 @@
 
 Guin-16 is a 16-bit CPU based on the [Von Neumann architecture](https://en.wikipedia.org/wiki/Von_Neumann_architecture). This CPU was built as a capstone project at Youngstown State University. Guin-16 was built using the [Logisim-Evolution](https://github.com/logisim-evolution/logisim-evolution) digital logic simulator and utilizes many of the features of the program.
 
-Guin-16 features a custom instruction set with instructions and addressing modes inspired by the [6502 processor](https://en.wikipedia.org/wiki/MOS_Technology_6502) and the [Astro-8 computer](https://sam-astro.github.io/Astro8-Computer/). There are 26 unique instructions, some of which having multiple addressing modes available for efficient memory management.
+Guin-16 features a custom instruction set with instructions and addressing modes inspired by the [6502 processor](https://en.wikipedia.org/wiki/MOS_Technology_6502) and the [Astro-8 computer](https://sam-astro.github.io/Astro8-Computer/). There are 26 unique instructions, some of which have multiple addressing modes available for efficient memory management.
 
-A unique features of the Guin-16 is the [Page Register](registers.md), which holds the index of a page in memory that can be accessed more efficiently than a typical relative memory access. This can be thought of as a dynamic [zero page](http://www.6502.org/users/obelisk/6502/addressing.html#ZPG), which is utilized in the 6502 processor.
+A unique feature of the Guin-16 is the [Page Register](registers.md), which holds the index of a page in memory that can be accessed more efficiently than a typical relative memory access. This can be thought of as a dynamic [zero page](http://www.6502.org/users/obelisk/6502/addressing.html#ZPG), which is utilized in the 6502 processor.
 
 ## Installation
 You can install and use the Guin-16 yourself, the circuit (as well as the source for this site and my presentation) can be found [here](https://github.com/shogrenjacob/16-bit-cpu). More information on installation requirements and running programs can be found on the [installation page](installation.md).
@@ -38,10 +38,15 @@ The Arithmetic Logic Unit (ALU) is responsible for performing arithmetical opera
 
 <img src="imgs/alu.png" alt="Program Counter" style="height: auto; width: 50%;"></img>
 
-### Stack Pointer
-The Stack Pointer is another counter that is used to keep track of return addresses during jumps or indirect addressing. It operates like a [stack data structure](https://en.wikipedia.org/wiki/Stack_(abstract_data_type)), where addresses are pushed and popped from the stack.
-
-<img src="imgs/sp.png" alt="Program Counter" style="height: auto; width: 100%;"></img>
-
 ## References
 I used the following resources in researching and building this project:
+
+[6502 Reference](http://www.6502.org/users/obelisk/6502/)
+
+[Implementing a One Address CPU in Logisim (Kann)](https://eng.libretexts.org/Bookshelves/Electrical_Engineering/Electronics/Implementing_a_One_Address_CPU_in_Logisim_(Kann)/05%3A_CPU_Implementation)
+
+[Memory Address Register Reference](https://en.wikipedia.org/wiki/Memory_address_register)
+
+[Program Counter Reference](https://www.sciencedirect.com/topics/computer-science/program-location-counter)
+
+[Astro-8 Computer](https://sam-astro.github.io/Astro8-Computer/docs/Architecture/Memory%20Layout.html)

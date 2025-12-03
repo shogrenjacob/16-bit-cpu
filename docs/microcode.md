@@ -3,15 +3,15 @@ When an instruction is read into the bus it is translated to a set of microinstr
 
 Some instructions require multiple clock ticks to complete their intended function. Therefore, one instruction could translate into a sequence of one or more microinstructions, resulting in a instruction taking multiple clock ticks. 
 
-The Guin-16 includes 37 microinstructions, which are then broken down into six groups to conserve the amount of bits needed to store the whole microinstruction set. These groups are [Write](#write), [Read](#read), [SP](#sp), [PC](#pc), [ALU](#alu), and [EDI](#edi). Another advantage of grouping, other than saving space, is that you can activate one microinstruction from each group on each clock tick. Without grouping, you would need to use a clock tick for each individual instruction. A microcode instruction is 16-bit, and the groups are organized in the instruction in the following format:
+The Guin-16 includes 37 microinstructions, which are then broken down into six groups to conserve the amount of bits needed to store the whole microinstruction set. These groups are [Write](#write), [Read](#read), [MAR](#mar), [PC](#pc), [ALU](#alu), and [EDI](#edi). Another advantage of grouping, other than saving space, is that you can activate one microinstruction from each group on each clock tick. Without grouping, you would need to use a clock tick for each individual instruction. A microcode instruction is 16-bit, and the groups are organized in the instruction in the following format:
 
-| [Write](#write) | [Read](#read) | [SP](#sp) | [PC](#pc) | [EDI](#edi) | [ALU](#alu) |
+| [Write](#write) | [Read](#read) | [MAR](#mar) | [PC](#pc) | [EDI](#edi) | [ALU](#alu) |
 |---|---|---|---|---|---|
 | 000 | 000 | 000 | 00 | 0 | 0000 |
 
 Where the most significant set of bits are in the write group and least significant are in the ALU group.
 
-> As an example, let's look at LDA Immediate. The instruction in binary would look like 0111100000000000 or x7800 in hex. Breaking down the binary of this instruction into each group gives us 011 (Write Accumulator), 110 (Read Memory), 000 (Nothing happens to the Stack Pointer), 00 (Nothing happens to the Program Counter), 0 (Instruction is not done), 00000 (No ALU operations are performed). 
+> As an example, let's look at LDA Immediate. The instruction in binary would look like 0111100000000000 or x7800 in hex. Breaking down the binary of this instruction into each group gives us 011 (Write Accumulator), 110 (Read Memory), 000 (Nothing happens to the MAR), 00 (Nothing happens to the Program Counter), 0 (Instruction is not done), 00000 (No ALU operations are performed). 
 
 The microcode included in each of these groups are below:
 
@@ -38,17 +38,14 @@ The read group is the group of microinstructions that includes signals to enable
 | rdp | 100 | Read value from the Page Register into the bus. |
 | rdi | 101 | Read value from Instruction Register into the bus. |
 | rdm | 110 | Read value from memory into the bus. |
-| rsp | 111 | Read the address pointed to by the Stack Pointer. |
 
-## SP
-The SP group represents actions that can be performed on the Stack Pointer besides reading and writing. The SP group requires 3 bits to hold the entire set.
+## MAR
+The MAR group represents actions that can be performed on the Memory Address Register besides reading and writing. The MAR group requires 3 bits to hold the entire set.
 
 | Microinstruction | Opcode (binary) | Usage | 
 |---|---|---|
-| isp | 001 | Increment the Stack Pointer, wraps to beginning if theres overflow. |
-| rep | 010 | Reset the Stack Pointer to 0. |
-| lsp | 011 | Load value into the Stack Pointer. |
-| msp | 100 | Change the stack pointer mode from increment to decrement, and vice versa. |
+| apg | 001 | Add page to the current memory address. |
+| spg | 010 | Subtract page from the current memory address. |
 | wma | 101 | Write to the MAR. |
 | rma | 110 | Read from the MAR. |
 
