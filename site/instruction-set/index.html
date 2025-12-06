@@ -1,0 +1,2279 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../installation/">
+      
+      
+        <link rel="next" href="../memory/">
+      
+      
+      <link rel="icon" href="../imgs/guin.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.23">
+    
+    
+      
+        <title>Instruction Set - Guin-16 Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.84d31ad4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="red" data-md-color-accent="red">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#instruction-set" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Guin-16 Docs" class="md-header__button md-logo" aria-label="Guin-16 Docs" data-md-component="logo">
+      
+  <img src="../imgs/guin.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Guin-16 Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Instruction Set
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="red" data-md-color-accent="red"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="red" data-md-color-accent="red"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/shogrenjacob/16-bit-cpu" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Guin-16 Docs" class="md-nav__button md-logo" aria-label="Guin-16 Docs" data-md-component="logo">
+      
+  <img src="../imgs/guin.png" alt="logo">
+
+    </a>
+    Guin-16 Docs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/shogrenjacob/16-bit-cpu" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../addressing-modes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Addressing Modes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../flags/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Flags
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Installation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Instruction Set
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Instruction Set
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#nop" class="md-nav__link">
+    <span class="md-ellipsis">
+      NOP
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lda" class="md-nav__link">
+    <span class="md-ellipsis">
+      LDA
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ldx" class="md-nav__link">
+    <span class="md-ellipsis">
+      LDX
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ldy" class="md-nav__link">
+    <span class="md-ellipsis">
+      LDY
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sta" class="md-nav__link">
+    <span class="md-ellipsis">
+      STA
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stx" class="md-nav__link">
+    <span class="md-ellipsis">
+      STX
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sty" class="md-nav__link">
+    <span class="md-ellipsis">
+      STY
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#and" class="md-nav__link">
+    <span class="md-ellipsis">
+      AND
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#or" class="md-nav__link">
+    <span class="md-ellipsis">
+      OR
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#not" class="md-nav__link">
+    <span class="md-ellipsis">
+      NOT
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bsl" class="md-nav__link">
+    <span class="md-ellipsis">
+      BSL
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bsr" class="md-nav__link">
+    <span class="md-ellipsis">
+      BSR
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rol" class="md-nav__link">
+    <span class="md-ellipsis">
+      ROL
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ror" class="md-nav__link">
+    <span class="md-ellipsis">
+      ROR
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ina" class="md-nav__link">
+    <span class="md-ellipsis">
+      INA
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inx" class="md-nav__link">
+    <span class="md-ellipsis">
+      INX
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iny" class="md-nav__link">
+    <span class="md-ellipsis">
+      INY
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inp" class="md-nav__link">
+    <span class="md-ellipsis">
+      INP
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adc" class="md-nav__link">
+    <span class="md-ellipsis">
+      ADC
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sbc" class="md-nav__link">
+    <span class="md-ellipsis">
+      SBC
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dep" class="md-nav__link">
+    <span class="md-ellipsis">
+      DEP
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jmp" class="md-nav__link">
+    <span class="md-ellipsis">
+      JMP
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jmpp" class="md-nav__link">
+    <span class="md-ellipsis">
+      JMPP
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#note-on-branch-instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Note on Branch Instructions:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#braz" class="md-nav__link">
+    <span class="md-ellipsis">
+      BRAZ
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#brxz" class="md-nav__link">
+    <span class="md-ellipsis">
+      BRXZ
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bryz" class="md-nav__link">
+    <span class="md-ellipsis">
+      BRYZ
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pshx" class="md-nav__link">
+    <span class="md-ellipsis">
+      PSHX
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pshy" class="md-nav__link">
+    <span class="md-ellipsis">
+      PSHY
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#psha" class="md-nav__link">
+    <span class="md-ellipsis">
+      PSHA
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plx" class="md-nav__link">
+    <span class="md-ellipsis">
+      PLX
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ply" class="md-nav__link">
+    <span class="md-ellipsis">
+      PLY
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pla" class="md-nav__link">
+    <span class="md-ellipsis">
+      PLA
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../memory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Memory Layout
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../microcode/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Microcode
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../registers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Registers
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#nop" class="md-nav__link">
+    <span class="md-ellipsis">
+      NOP
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lda" class="md-nav__link">
+    <span class="md-ellipsis">
+      LDA
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ldx" class="md-nav__link">
+    <span class="md-ellipsis">
+      LDX
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ldy" class="md-nav__link">
+    <span class="md-ellipsis">
+      LDY
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sta" class="md-nav__link">
+    <span class="md-ellipsis">
+      STA
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stx" class="md-nav__link">
+    <span class="md-ellipsis">
+      STX
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sty" class="md-nav__link">
+    <span class="md-ellipsis">
+      STY
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#and" class="md-nav__link">
+    <span class="md-ellipsis">
+      AND
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#or" class="md-nav__link">
+    <span class="md-ellipsis">
+      OR
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#not" class="md-nav__link">
+    <span class="md-ellipsis">
+      NOT
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bsl" class="md-nav__link">
+    <span class="md-ellipsis">
+      BSL
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bsr" class="md-nav__link">
+    <span class="md-ellipsis">
+      BSR
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rol" class="md-nav__link">
+    <span class="md-ellipsis">
+      ROL
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ror" class="md-nav__link">
+    <span class="md-ellipsis">
+      ROR
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ina" class="md-nav__link">
+    <span class="md-ellipsis">
+      INA
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inx" class="md-nav__link">
+    <span class="md-ellipsis">
+      INX
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iny" class="md-nav__link">
+    <span class="md-ellipsis">
+      INY
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inp" class="md-nav__link">
+    <span class="md-ellipsis">
+      INP
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adc" class="md-nav__link">
+    <span class="md-ellipsis">
+      ADC
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sbc" class="md-nav__link">
+    <span class="md-ellipsis">
+      SBC
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dep" class="md-nav__link">
+    <span class="md-ellipsis">
+      DEP
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jmp" class="md-nav__link">
+    <span class="md-ellipsis">
+      JMP
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jmpp" class="md-nav__link">
+    <span class="md-ellipsis">
+      JMPP
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#note-on-branch-instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Note on Branch Instructions:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#braz" class="md-nav__link">
+    <span class="md-ellipsis">
+      BRAZ
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#brxz" class="md-nav__link">
+    <span class="md-ellipsis">
+      BRXZ
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bryz" class="md-nav__link">
+    <span class="md-ellipsis">
+      BRYZ
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pshx" class="md-nav__link">
+    <span class="md-ellipsis">
+      PSHX
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pshy" class="md-nav__link">
+    <span class="md-ellipsis">
+      PSHY
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#psha" class="md-nav__link">
+    <span class="md-ellipsis">
+      PSHA
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plx" class="md-nav__link">
+    <span class="md-ellipsis">
+      PLX
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ply" class="md-nav__link">
+    <span class="md-ellipsis">
+      PLY
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pla" class="md-nav__link">
+    <span class="md-ellipsis">
+      PLA
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="instruction-set">Instruction Set</h1>
+<p>For any non-data word, the center two hex digits of data at a memory address represent a given opcode. The first hex digit (from left to right) represents the <a href="../addressing-modes/">addressing mode</a> to use, and the last hex digit represents what flags to compare during instruction processing.</p>
+<blockquote>
+<p>For example, x4021 in memory tells the CPU to perform a <a href="./#lda">LDA</a> (0x02) using the next word in memory as an <a href="../addressing-modes/#absolute">Absolute</a> (0x4) address, and to check whether or not the <a href="../flags/#zero">zero flag</a> is raised (0x1).</p>
+</blockquote>
+<h2 id="nop">NOP</h2>
+<p>Do nothing, but increment the program counter.</p>
+<table>
+<thead>
+<tr>
+<th>Addressing Mode</th>
+<th>Opcode</th>
+<th>Cycle Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../addressing-modes/#implicit">Implicit</a></td>
+<td>x000</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Processor Status Changes:</strong></p>
+<ul>
+<li>Carry: No change.</li>
+<li>Zero: No change.</li>
+<li>Overflow: No change.</li>
+<li>Parity: No change.</li>
+<li>Negative: No change.</li>
+</ul>
+<h2 id="lda">LDA</h2>
+<p>Load the next data word into the Accumulator.</p>
+<table>
+<thead>
+<tr>
+<th>Addressing Mode</th>
+<th>Opcode</th>
+<th>Cycle Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../addressing-modes/#immediate">Immediate</a></td>
+<td>x002</td>
+<td>2</td>
+</tr>
+<tr>
+<td><a href="../addressing-modes/#pageahead">PageAhead</a></td>
+<td>x502</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="../addressing-modes/#pagebehind">PageBehind</a></td>
+<td>x202</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="../addressing-modes/#absolute">Absolute</a></td>
+<td>x402</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="../addressing-modes/#absolutex">AbsoluteX</a></td>
+<td>x102</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="../addressing-modes/#absolutey">AbsoluteY</a></td>
+<td>x602</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Processor Status Changes:</strong></p>
+<ul>
+<li>Carry: No change.</li>
+<li>Zero: Raise if Accumulator = 0.</li>
+<li>Overflow: No change.</li>
+<li>Parity: Raise if bit 0 of the Accumulator is up.</li>
+<li>Negative: Raise if bit 15 of the Accumulator is up.</li>
+</ul>
+<h2 id="ldx">LDX</h2>
+<p>Load the next data word into the X Register.</p>
+<table>
+<thead>
+<tr>
+<th>Addressing Mode</th>
+<th>Opcode</th>
+<th>Cycle Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../addressing-modes/#immediate">Immediate</a></td>
+<td>x006</td>
+<td>2</td>
+</tr>
+<tr>
+<td><a href="../addressing-modes/#pageahead">PageAhead</a></td>
+<td>x50c</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="../addressing-modes/#pagebehind">PageBehind</a></td>
+<td>x20c</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="../addressing-modes/#absolute">Absolute</a></td>
+<td>x40c</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="../addressing-modes/#absolutex">AbsoluteX</a></td>
+<td>x10c</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="../addressing-modes/#absolutey">AbsoluteY</a></td>
+<td>x60c</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Processor Status Changes:</strong></p>
+<ul>
+<li>Carry: No change.</li>
+<li>Zero: Raise if X Register = 0.</li>
+<li>Overflow: No change.</li>
+<li>Parity: Raise if bit 0 of the X Register is up.</li>
+<li>Negative: Raise if bit 15 of the X Register is up.</li>
+</ul>
+<h2 id="ldy">LDY</h2>
+<p>Load the next data word into the Y Register.</p>
+<table>
+<thead>
+<tr>
+<th>Addressing Mode</th>
+<th>Opcode</th>
+<th>Cycle Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../addressing-modes/#immediate">Immediate</a></td>
+<td>x00a</td>
+<td>2</td>
+</tr>
+<tr>
+<td><a href="../addressing-modes/#pageahead">PageAhead</a></td>
+<td>x516</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="../addressing-modes/#pagebehind">PageBehind</a></td>
+<td>x216</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="../addressing-modes/#absolute">Absolute</a></td>
+<td>x417</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="../addressing-modes/#absolutex">AbsoluteX</a></td>
+<td>x116</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="../addressing-modes/#absolutey">AbsoluteY</a></td>
+<td>x616</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Processor Status Changes:</strong></p>
+<ul>
+<li>Carry: No change.</li>
+<li>Zero: Raise if Y Register = 0.</li>
+<li>Overflow: No change.</li>
+<li>Parity: Raise if bit 0 of the Y Register is up.</li>
+<li>Negative: Raise if bit 15 of the Y Register is up.</li>
+</ul>
+<h2 id="sta">STA</h2>
+<p>Store the contents of the Accumulator at the processed memory address.</p>
+<table>
+<thead>
+<tr>
+<th>Addressing Mode</th>
+<th>Opcode</th>
+<th>Cycle Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../addressing-modes/#immediate">Immediate</a></td>
+<td>x00e</td>
+<td>2</td>
+</tr>
+<tr>
+<td><a href="../addressing-modes/#pageahead">PageAhead</a></td>
+<td>x520</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="../addressing-modes/#pagebehind">PageBehind</a></td>
+<td>x220</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="../addressing-modes/#absolute">Absolute</a></td>
+<td>x421</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="../addressing-modes/#absolutex">AbsoluteX</a></td>
+<td>x120</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="../addressing-modes/#absolutey">AbsoluteY</a></td>
+<td>x620</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Processor Status Changes:</strong></p>
+<ul>
+<li>Carry: No change.</li>
+<li>Zero: Raise if value = 0.</li>
+<li>Overflow: No change.</li>
+<li>Parity: Raise if bit 0 of the value is up.</li>
+<li>Negative: Raise if bit 15 of the value is up.</li>
+</ul>
+<h2 id="stx">STX</h2>
+<p>Store the contents of the X Register at the processed memory address.</p>
+<table>
+<thead>
+<tr>
+<th>Addressing Mode</th>
+<th>Opcode</th>
+<th>Cycle Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../addressing-modes/#immediate">Immediate</a></td>
+<td>x012</td>
+<td>2</td>
+</tr>
+<tr>
+<td><a href="../addressing-modes/#pageahead">PageAhead</a></td>
+<td>x52a</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="../addressing-modes/#pagebehind">PageBehind</a></td>
+<td>x22a</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="../addressing-modes/#absolute">Absolute</a></td>
+<td>x42b</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="../addressing-modes/#absolutex">AbsoluteX</a></td>
+<td>x12a</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="../addressing-modes/#absolutey">AbsoluteY</a></td>
+<td>x62a</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Processor Status Changes:</strong></p>
+<ul>
+<li>Carry: No change.</li>
+<li>Zero: Raise if value = 0.</li>
+<li>Overflow: No change.</li>
+<li>Parity: Raise if bit 0 of the value is up.</li>
+<li>Negative: Raise if bit 15 of the value is up.</li>
+</ul>
+<h2 id="sty">STY</h2>
+<p>Store the contents of the Y Register at the processed memory address.</p>
+<table>
+<thead>
+<tr>
+<th>Addressing Mode</th>
+<th>Opcode</th>
+<th>Cycle Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../addressing-modes/#immediate">Immediate</a></td>
+<td>x016</td>
+<td>2</td>
+</tr>
+<tr>
+<td><a href="../addressing-modes/#pageahead">PageAhead</a></td>
+<td>x534</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="../addressing-modes/#pagebehind">PageBehind</a></td>
+<td>x234</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="../addressing-modes/#absolute">Absolute</a></td>
+<td>x435</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="../addressing-modes/#absolutex">AbsoluteX</a></td>
+<td>x134</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="../addressing-modes/#absolutey">AbsoluteY</a></td>
+<td>x634</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Processor Status Changes:</strong></p>
+<ul>
+<li>Carry: No change.</li>
+<li>Zero: Raise if value = 0.</li>
+<li>Overflow: No change.</li>
+<li>Parity: Raise if bit 0 of the value is up.</li>
+<li>Negative: Raise if bit 15 of the value is up.</li>
+</ul>
+<h2 id="and">AND</h2>
+<p>Perform a bitwise AND operation on the Accumulator and a given word.</p>
+<table>
+<thead>
+<tr>
+<th>Addressing Mode</th>
+<th>Opcode</th>
+<th>Cycle Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../addressing-modes/#immediate">Immediate</a></td>
+<td>x01a</td>
+<td>2</td>
+</tr>
+<tr>
+<td><a href="../addressing-modes/#pageahead">PageAhead</a></td>
+<td>x53e</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="../addressing-modes/#pagebehind">PageBehind</a></td>
+<td>x23e</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="../addressing-modes/#absolute">Absolute</a></td>
+<td>x43f</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="../addressing-modes/#absolutex">AbsoluteX</a></td>
+<td>x13e</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="../addressing-modes/#absolutey">AbsoluteY</a></td>
+<td>x63e</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Processor Status Changes:</strong></p>
+<ul>
+<li>Carry: No change.</li>
+<li>Zero: Raise if result = 0.</li>
+<li>Overflow: No change.</li>
+<li>Parity: Raise if bit 0 of the result is up.</li>
+<li>Negative: Raise if bit 15 of the result is up.</li>
+</ul>
+<h2 id="or">OR</h2>
+<p>Perform a bitwise OR operation on the Accumulator and a given word.</p>
+<table>
+<thead>
+<tr>
+<th>Addressing Mode</th>
+<th>Opcode</th>
+<th>Cycle Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../addressing-modes/#immediate">Immediate</a></td>
+<td>x01e</td>
+<td>2</td>
+</tr>
+<tr>
+<td><a href="../addressing-modes/#pageahead">PageAhead</a></td>
+<td>x548</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="../addressing-modes/#pagebehind">PageBehind</a></td>
+<td>x248</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="../addressing-modes/#absolute">Absolute</a></td>
+<td>x449</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="../addressing-modes/#absolutex">AbsoluteX</a></td>
+<td>x148</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="../addressing-modes/#absolutey">AbsoluteY</a></td>
+<td>x648</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Processor Status Changes:</strong></p>
+<ul>
+<li>Carry: No change.</li>
+<li>Zero: Raise if result = 0.</li>
+<li>Overflow: No change.</li>
+<li>Parity: Raise if bit 0 of the result is up.</li>
+<li>Negative: Raise if bit 15 of the result is up.</li>
+</ul>
+<h2 id="not">NOT</h2>
+<p>Perform a bitwise NOT operation on the Accumulator.</p>
+<table>
+<thead>
+<tr>
+<th>Addressing Mode</th>
+<th>Opcode</th>
+<th>Cycle Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../addressing-modes/#implicit">Implicit</a></td>
+<td>x022</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Processor Status Changes:</strong></p>
+<ul>
+<li>Carry: No change.</li>
+<li>Zero: Raise if result = 0.</li>
+<li>Overflow: No change.</li>
+<li>Parity: Raise if bit 0 of the result is up.</li>
+<li>Negative: Raise if bit 15 of the result is up.</li>
+</ul>
+<h2 id="bsl">BSL</h2>
+<p>Shift all bits of the Accumulator one spot to the left. The most significant bit is discarded during the operation and the least significant bit is filled with a zero.</p>
+<table>
+<thead>
+<tr>
+<th>Addressing Mode</th>
+<th>Opcode</th>
+<th>Cycle Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../addressing-modes/#implicit">Implicit</a></td>
+<td>x026</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Processor Status Changes:</strong></p>
+<ul>
+<li>Carry: No change.</li>
+<li>Zero: Raise if result = 0.</li>
+<li>Overflow: No change.</li>
+<li>Parity: Raise if bit 0 of the result is up.</li>
+<li>Negative: Raise if bit 15 of the result is up.</li>
+</ul>
+<h2 id="bsr">BSR</h2>
+<p>Shift all bits of the Accumulator one spot to the right. The least significant bit is discarded during the operation and the most significant bit is filled with a zero.</p>
+<table>
+<thead>
+<tr>
+<th>Addressing Mode</th>
+<th>Opcode</th>
+<th>Cycle Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../addressing-modes/#implicit">Implicit</a></td>
+<td>x02a</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Processor Status Changes:</strong></p>
+<ul>
+<li>Carry: No change.</li>
+<li>Zero: Raise if result = 0.</li>
+<li>Overflow: No change.</li>
+<li>Parity: Raise if bit 0 of the result is up.</li>
+<li>Negative: Raise if bit 15 of the result is up.</li>
+</ul>
+<h2 id="rol">ROL</h2>
+<p>Shift all bits of the Accumulator one spot to the left, the most significant bit wraps around to become the least significant bit.</p>
+<table>
+<thead>
+<tr>
+<th>Addressing Mode</th>
+<th>Opcode</th>
+<th>Cycle Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../addressing-modes/#implicit">Implicit</a></td>
+<td>x02e</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Processor Status Changes:</strong></p>
+<ul>
+<li>Carry: No change.</li>
+<li>Zero: Raise if result = 0.</li>
+<li>Overflow: No change.</li>
+<li>Parity: Raise if bit 0 of the result is up.</li>
+<li>Negative: Raise if bit 15 of the result is up.</li>
+</ul>
+<h2 id="ror">ROR</h2>
+<p>Shift all bits of the Accumulator one spot to the right, the least significant bit wraps around to become the most significant bit.</p>
+<table>
+<thead>
+<tr>
+<th>Addressing Mode</th>
+<th>Opcode</th>
+<th>Cycle Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../addressing-modes/#implicit">Implicit</a></td>
+<td>x032</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Processor Status Changes:</strong></p>
+<ul>
+<li>Carry: No change.</li>
+<li>Zero: Raise if result = 0.</li>
+<li>Overflow: No change.</li>
+<li>Parity: Raise if bit 0 of the result is up.</li>
+<li>Negative: Raise if bit 15 of the result is up.</li>
+</ul>
+<h2 id="ina">INA</h2>
+<p>Increment the contents of the Accumulator by 1.</p>
+<table>
+<thead>
+<tr>
+<th>Addressing Mode</th>
+<th>Opcode</th>
+<th>Cycle Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../addressing-modes/#implicit">Implicit</a></td>
+<td>x036</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Processor Status Changes:</strong></p>
+<ul>
+<li>Carry: Raise if addition results in a carry bit.</li>
+<li>Zero: Raise if result = 0.</li>
+<li>Overflow: Raise if Accumulator value overflows.</li>
+<li>Parity: Raise if bit 0 of the result is up.</li>
+<li>Negative: Raise if bit 15 of the result is up.</li>
+</ul>
+<h2 id="inx">INX</h2>
+<p>Increment the contents of the X Register by 1.</p>
+<table>
+<thead>
+<tr>
+<th>Addressing Mode</th>
+<th>Opcode</th>
+<th>Cycle Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../addressing-modes/#implicit">Implicit</a></td>
+<td>x03a</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Processor Status Changes:</strong></p>
+<ul>
+<li>Carry: Raise if addition results in a carry bit.</li>
+<li>Zero: Raise if result = 0.</li>
+<li>Overflow: Raise if X Register value overflows.</li>
+<li>Parity: Raise if bit 0 of the result is up.</li>
+<li>Negative: Raise if bit 15 of the result is up.</li>
+</ul>
+<h2 id="iny">INY</h2>
+<p>Increment the contents of the Y Register by 1.</p>
+<table>
+<thead>
+<tr>
+<th>Addressing Mode</th>
+<th>Opcode</th>
+<th>Cycle Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../addressing-modes/#implicit">Implicit</a></td>
+<td>x03e</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Processor Status Changes:</strong></p>
+<ul>
+<li>Carry: Raise if addition results in a carry bit.</li>
+<li>Zero: Raise if result = 0.</li>
+<li>Overflow: Raise if Y Register value overflows.</li>
+<li>Parity: Raise if bit 0 of the result is up.</li>
+<li>Negative: Raise if bit 15 of the result is up.</li>
+</ul>
+<h2 id="inp">INP</h2>
+<p>Increment the contents of the page register by 1.</p>
+<table>
+<thead>
+<tr>
+<th>Addressing Mode</th>
+<th>Opcode</th>
+<th>Cycle Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../addressing-modes/#implicit">Implicit</a></td>
+<td>x042</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Processor Status Changes:</strong></p>
+<ul>
+<li>Carry: Raise if addition results in a carry bit.</li>
+<li>Zero: Raise if result = 0.</li>
+<li>Overflow: Raise if page register value overflows.</li>
+<li>Parity: Raise if bit 0 of the result is up.</li>
+<li>Negative: Raise if bit 15 of the result is up.</li>
+</ul>
+<h2 id="adc">ADC</h2>
+<p>Add a given value to the Accumulator. Generate a carry bit if the addition results in a carry.</p>
+<table>
+<thead>
+<tr>
+<th>Addressing Mode</th>
+<th>Opcode</th>
+<th>Cycle Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../addressing-modes/#immediate">Immediate</a></td>
+<td>x046</td>
+<td>2</td>
+</tr>
+<tr>
+<td><a href="../addressing-modes/#pageahead">PageAhead</a></td>
+<td>x552</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="../addressing-modes/#pagebehind">PageBehind</a></td>
+<td>x252</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="../addressing-modes/#absolute">Absolute</a></td>
+<td>x453</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="../addressing-modes/#absolutex">AbsoluteX</a></td>
+<td>x152</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="../addressing-modes/#absolutey">AbsoluteY</a></td>
+<td>x652</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Processor Status Changes:</strong></p>
+<ul>
+<li>Carry: Raise if addition results in a carry bit.</li>
+<li>Zero: Raise if result = 0.</li>
+<li>Overflow: Raise if addition overflows.</li>
+<li>Parity: Raise if bit 0 of the result is up.</li>
+<li>Negative: Raise if bit 15 of the result is up.</li>
+</ul>
+<h2 id="sbc">SBC</h2>
+<p>Subtract a given value from the Accumulator.</p>
+<table>
+<thead>
+<tr>
+<th>Addressing Mode</th>
+<th>Opcode</th>
+<th>Cycle Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../addressing-modes/#immediate">Immediate</a></td>
+<td>x04a</td>
+<td>2</td>
+</tr>
+<tr>
+<td><a href="../addressing-modes/#pageahead">PageAhead</a></td>
+<td>x55c</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="../addressing-modes/#pagebehind">PageBehind</a></td>
+<td>x25c</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="../addressing-modes/#absolute">Absolute</a></td>
+<td>x45d</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="../addressing-modes/#absolutex">AbsoluteX</a></td>
+<td>x15c</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="../addressing-modes/#absolutey">AbsoluteY</a></td>
+<td>x65c</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Processor Status Changes:</strong></p>
+<ul>
+<li>Carry: No change.</li>
+<li>Zero: Raise if result = 0.</li>
+<li>Overflow: No change.</li>
+<li>Parity: Raise if bit 0 of the result is up.</li>
+<li>Negative: Raise if bit 15 of the result is up.</li>
+</ul>
+<h2 id="dep">DEP</h2>
+<p>Decrement the contents of the page register by 1.</p>
+<table>
+<thead>
+<tr>
+<th>Addressing Mode</th>
+<th>Opcode</th>
+<th>Cycle Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../addressing-modes/#implicit">Implicit</a></td>
+<td>x04e</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Processor Status Changes:</strong></p>
+<ul>
+<li>Carry: Raise if addition results in a carry bit.</li>
+<li>Zero: Raise if result = 0.</li>
+<li>Overflow: Raise if page register value overflows.</li>
+<li>Parity: Raise if bit 0 of the result is up.</li>
+<li>Negative: Raise if bit 15 of the result is up.</li>
+</ul>
+<h2 id="jmp">JMP</h2>
+<p>Jump to the memory location given by the processed data word.</p>
+<table>
+<thead>
+<tr>
+<th>Addressing Mode</th>
+<th>Opcode</th>
+<th>Cycle Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../addressing-modes/#immediate">Immediate</a></td>
+<td>x052</td>
+<td>2</td>
+</tr>
+<tr>
+<td><a href="../addressing-modes/#pageahead">PageAhead</a></td>
+<td>x566</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="../addressing-modes/#pagebehind">PageBehind</a></td>
+<td>x266</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="../addressing-modes/#absolute">Absolute</a></td>
+<td>x467</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="../addressing-modes/#absolutex">AbsoluteX</a></td>
+<td>x166</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="../addressing-modes/#absolutey">AbsoluteY</a></td>
+<td>x666 (Spooky!)</td>
+<td>3</td>
+</tr>
+<tr>
+<td><a href="../addressing-modes/#indirect">Indirect</a></td>
+<td>x766</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Processor Status Changes:</strong></p>
+<ul>
+<li>Carry: No change.</li>
+<li>Zero: No change.</li>
+<li>Overflow: No change.</li>
+<li>Parity: No change.</li>
+<li>Negative: No change.</li>
+</ul>
+<h2 id="jmpp">JMPP</h2>
+<p>Jump to the start of the page given by the page register.</p>
+<blockquote>
+<p>Note: The page register stores the <strong>page number</strong> of the page to jump to, not the address at the start of the page. So, a page register holding a value of 1 will jump to 0xff in memory.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Addressing Mode</th>
+<th>Opcode</th>
+<th>Cycle Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../addressing-modes/#implicit">Implicit</a></td>
+<td>x056</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Processor Status Changes:</strong></p>
+<ul>
+<li>Carry: No change.</li>
+<li>Zero: No change.</li>
+<li>Overflow: No change.</li>
+<li>Parity: No change.</li>
+<li>Negative: No change.</li>
+</ul>
+<h2 id="note-on-branch-instructions">Note on Branch Instructions:</h2>
+<p>The extra hex digit in the opcode represents the flag to check for the conditional branch. Theoretically, you can use 2, 4, 8, and f as the last digit to use different flags as conditionals but that is not officially supported in the instruction set.</p>
+<h2 id="braz">BRAZ</h2>
+<p>Jump to the given memory address only if the Accumulator = 0.</p>
+<table>
+<thead>
+<tr>
+<th>Addressing Mode</th>
+<th>Opcode</th>
+<th>Cycle Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../addressing-modes/#immediate">Immediate</a></td>
+<td>x05a1</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Processor Status Changes:</strong></p>
+<ul>
+<li>Carry: No change.</li>
+<li>Zero: No change.</li>
+<li>Overflow: No change.</li>
+<li>Parity: No change.</li>
+<li>Negative: No change.</li>
+</ul>
+<h2 id="brxz">BRXZ</h2>
+<p>Jump to the given memory address only if the X Register = 0.</p>
+<table>
+<thead>
+<tr>
+<th>Addressing Mode</th>
+<th>Opcode</th>
+<th>Cycle Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../addressing-modes/#immediate">Immediate</a></td>
+<td>x05e1</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Processor Status Changes:</strong></p>
+<ul>
+<li>Carry: No change.</li>
+<li>Zero: No change.</li>
+<li>Overflow: No change.</li>
+<li>Parity: No change.</li>
+<li>Negative: No change.</li>
+</ul>
+<h2 id="bryz">BRYZ</h2>
+<p>Jump to the given memory address only if the Y Register = 0.</p>
+<table>
+<thead>
+<tr>
+<th>Addressing Mode</th>
+<th>Opcode</th>
+<th>Cycle Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../addressing-modes/#immediate">Immediate</a></td>
+<td>x0621</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Processor Status Changes:</strong></p>
+<ul>
+<li>Carry: No change.</li>
+<li>Zero: No change.</li>
+<li>Overflow: No change.</li>
+<li>Parity: No change.</li>
+<li>Negative: No change.</li>
+</ul>
+<h2 id="pshx">PSHX</h2>
+<p>Push the value at register X onto the stack.</p>
+<table>
+<thead>
+<tr>
+<th>Addressing Mode</th>
+<th>Opcode</th>
+<th>Cycle Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../addressing-modes/#immediate">Immediate</a></td>
+<td>x0660</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Processor Status Changes:</strong></p>
+<ul>
+<li>Carry: No change.</li>
+<li>Zero: No change.</li>
+<li>Overflow: No change.</li>
+<li>Parity: No change.</li>
+<li>Negative: No change.</li>
+</ul>
+<h2 id="pshy">PSHY</h2>
+<p>Push the value at register Y onto the stack.</p>
+<table>
+<thead>
+<tr>
+<th>Addressing Mode</th>
+<th>Opcode</th>
+<th>Cycle Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../addressing-modes/#immediate">Immediate</a></td>
+<td>x0700</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Processor Status Changes:</strong></p>
+<ul>
+<li>Carry: No change.</li>
+<li>Zero: No change.</li>
+<li>Overflow: No change.</li>
+<li>Parity: No change.</li>
+<li>Negative: No change.</li>
+</ul>
+<h2 id="psha">PSHA</h2>
+<p>Push the value stored by the Accumulator onto the stack.</p>
+<table>
+<thead>
+<tr>
+<th>Addressing Mode</th>
+<th>Opcode</th>
+<th>Cycle Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../addressing-modes/#immediate">Immediate</a></td>
+<td>x07a0</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Processor Status Changes:</strong></p>
+<ul>
+<li>Carry: No change.</li>
+<li>Zero: No change.</li>
+<li>Overflow: No change.</li>
+<li>Parity: No change.</li>
+<li>Negative: No change.</li>
+</ul>
+<h2 id="plx">PLX</h2>
+<p>Pull a value from the top of the stack and write it to the X register.</p>
+<table>
+<thead>
+<tr>
+<th>Addressing Mode</th>
+<th>Opcode</th>
+<th>Cycle Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../addressing-modes/#immediate">Immediate</a></td>
+<td>x0840</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Processor Status Changes:</strong></p>
+<ul>
+<li>Carry: No change.</li>
+<li>Zero: No change.</li>
+<li>Overflow: No change.</li>
+<li>Parity: No change.</li>
+<li>Negative: No change.</li>
+</ul>
+<h2 id="ply">PLY</h2>
+<p>Pull a value from the top of the stack and write it to the Y register.</p>
+<table>
+<thead>
+<tr>
+<th>Addressing Mode</th>
+<th>Opcode</th>
+<th>Cycle Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../addressing-modes/#immediate">Immediate</a></td>
+<td>x08e0</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Processor Status Changes:</strong></p>
+<ul>
+<li>Carry: No change.</li>
+<li>Zero: No change.</li>
+<li>Overflow: No change.</li>
+<li>Parity: No change.</li>
+<li>Negative: No change.</li>
+</ul>
+<h2 id="pla">PLA</h2>
+<p>Pull a value from the top of the stack and write it to the Accumulator.</p>
+<table>
+<thead>
+<tr>
+<th>Addressing Mode</th>
+<th>Opcode</th>
+<th>Cycle Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../addressing-modes/#immediate">Immediate</a></td>
+<td>x0980</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Processor Status Changes:</strong></p>
+<ul>
+<li>Carry: No change.</li>
+<li>Zero: No change.</li>
+<li>Overflow: No change.</li>
+<li>Parity: No change.</li>
+<li>Negative: No change.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>

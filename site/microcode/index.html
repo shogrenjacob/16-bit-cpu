@@ -1,0 +1,965 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../memory/">
+      
+      
+        <link rel="next" href="../registers/">
+      
+      
+      <link rel="icon" href="../imgs/guin.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.23">
+    
+    
+      
+        <title>Microcode - Guin-16 Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.84d31ad4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="red" data-md-color-accent="red">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#microcode" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Guin-16 Docs" class="md-header__button md-logo" aria-label="Guin-16 Docs" data-md-component="logo">
+      
+  <img src="../imgs/guin.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Guin-16 Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Microcode
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="red" data-md-color-accent="red"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="red" data-md-color-accent="red"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/shogrenjacob/16-bit-cpu" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Guin-16 Docs" class="md-nav__button md-logo" aria-label="Guin-16 Docs" data-md-component="logo">
+      
+  <img src="../imgs/guin.png" alt="logo">
+
+    </a>
+    Guin-16 Docs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/shogrenjacob/16-bit-cpu" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../addressing-modes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Addressing Modes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../flags/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Flags
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Installation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../instruction-set/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Instruction Set
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../memory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Memory Layout
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Microcode
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Microcode
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#write" class="md-nav__link">
+    <span class="md-ellipsis">
+      Write
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#read" class="md-nav__link">
+    <span class="md-ellipsis">
+      Read
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#indirect" class="md-nav__link">
+    <span class="md-ellipsis">
+      Indirect
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pc" class="md-nav__link">
+    <span class="md-ellipsis">
+      PC
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#edi" class="md-nav__link">
+    <span class="md-ellipsis">
+      EDI
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#alu" class="md-nav__link">
+    <span class="md-ellipsis">
+      ALU
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../registers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Registers
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#write" class="md-nav__link">
+    <span class="md-ellipsis">
+      Write
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#read" class="md-nav__link">
+    <span class="md-ellipsis">
+      Read
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#indirect" class="md-nav__link">
+    <span class="md-ellipsis">
+      Indirect
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pc" class="md-nav__link">
+    <span class="md-ellipsis">
+      PC
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#edi" class="md-nav__link">
+    <span class="md-ellipsis">
+      EDI
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#alu" class="md-nav__link">
+    <span class="md-ellipsis">
+      ALU
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="microcode">Microcode</h1>
+<p>When an instruction is read into the bus it is translated to a set of microinstructions. These microinstructions tell the Guin-16 what hardware-level signals should be sent to different parts of the CPU. Microinstructions are exclusively seen by the CPU as true or false, turning features of the CPU on or off.</p>
+<p>Some instructions require multiple clock ticks to complete their intended function. Therefore, one instruction could translate into a sequence of one or more microinstructions, resulting in a instruction taking multiple clock ticks. </p>
+<p>The Guin-16 includes 37 microinstructions, which are then broken down into six groups to conserve the amount of bits needed to store the whole microinstruction set. These groups are <a href="#write">Write</a>, <a href="#read">Read</a>, <a href="#mar">MAR</a>, <a href="#pc">PC</a>, <a href="#alu">ALU</a>, and <a href="#edi">EDI</a>. Another advantage of grouping, other than saving space, is that you can activate one microinstruction from each group on each clock tick. Without grouping, you would need to use a clock tick for each individual instruction. A microcode instruction is 16-bit, and the groups are organized in the instruction in the following format:</p>
+<table>
+<thead>
+<tr>
+<th><a href="#write">Write</a></th>
+<th><a href="#read">Read</a></th>
+<th><a href="#mar">MAR</a></th>
+<th><a href="#pc">PC</a></th>
+<th><a href="#edi">EDI</a></th>
+<th><a href="#alu">ALU</a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>000</td>
+<td>000</td>
+<td>000</td>
+<td>00</td>
+<td>0</td>
+<td>0000</td>
+</tr>
+</tbody>
+</table>
+<p>Where the most significant set of bits are in the write group and least significant are in the ALU group.</p>
+<blockquote>
+<p>As an example, let's look at LDA Immediate. The instruction in binary would look like 0111100000000000 or x7800 in hex. Breaking down the binary of this instruction into each group gives us 011 (Write Accumulator), 110 (Read Memory), 000 (Nothing happens to the MAR), 00 (Nothing happens to the Program Counter), 0 (Instruction is not done), 00000 (No ALU operations are performed). </p>
+</blockquote>
+<p>The microcode included in each of these groups are below:</p>
+<h2 id="write">Write</h2>
+<p>The write group is the group of microinstructions that includes signals to enable write functionality in different components of the CPU. The write group requires 3 bits to hold the entire set. </p>
+<table>
+<thead>
+<tr>
+<th>Microinstruction</th>
+<th>Opcode (binary)</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>wrx</td>
+<td>001</td>
+<td>Write value from the bus to the X Register.</td>
+</tr>
+<tr>
+<td>wry</td>
+<td>010</td>
+<td>Write value from the bus to the Y Register.</td>
+</tr>
+<tr>
+<td>wra</td>
+<td>011</td>
+<td>Write value from the bus to the Accumulator.</td>
+</tr>
+<tr>
+<td>wrp</td>
+<td>100</td>
+<td>Write value from the bus to the Page Register.</td>
+</tr>
+<tr>
+<td>wri</td>
+<td>101</td>
+<td>Write from the bus to the Instruction Register.</td>
+</tr>
+<tr>
+<td>wrm</td>
+<td>110</td>
+<td>Write from the bus to memory.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="read">Read</h2>
+<p>The read group is the group of microinstructions that includes signals to enable read functionality in different components of the CPU. The read group requires 3 bits to hold the entire set. </p>
+<table>
+<thead>
+<tr>
+<th>Microinstruction</th>
+<th>Opcode (binary)</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>rdx</td>
+<td>001</td>
+<td>Read value from X Register into the bus.</td>
+</tr>
+<tr>
+<td>rdy</td>
+<td>010</td>
+<td>Read value from Y Register into the bus.</td>
+</tr>
+<tr>
+<td>rda</td>
+<td>011</td>
+<td>Read value from the Accumulator into the bus.</td>
+</tr>
+<tr>
+<td>rdp</td>
+<td>100</td>
+<td>Read value from the Page Register into the bus.</td>
+</tr>
+<tr>
+<td>rdi</td>
+<td>101</td>
+<td>Read value from Instruction Register into the bus.</td>
+</tr>
+<tr>
+<td>rdm</td>
+<td>110</td>
+<td>Read value from memory into the bus.</td>
+</tr>
+<tr>
+<td>rsp</td>
+<td>111</td>
+<td>Read address pointed to by the Stack Pointer.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="indirect">Indirect</h2>
+<p>The indirect group denotes microcode instructions that assist in operations that use indirect addressing. The Indirect group requires 3 bits to hold all microinstructions.</p>
+<table>
+<thead>
+<tr>
+<th>Microinstruction</th>
+<th>Opcode (binary)</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>apg</td>
+<td>001</td>
+<td>Add page to the current memory address.</td>
+</tr>
+<tr>
+<td>spg</td>
+<td>010</td>
+<td>Subtract page from the current memory address.</td>
+</tr>
+<tr>
+<td>isp</td>
+<td>100</td>
+<td>Increment the Stack Pointer by 1.</td>
+</tr>
+<tr>
+<td>wma</td>
+<td>101</td>
+<td>Write to the MAR.</td>
+</tr>
+<tr>
+<td>rma</td>
+<td>110</td>
+<td>Read from the MAR.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="pc">PC</h2>
+<p>The PC group represents actions that can be performed by the Program Counter. The PC group requires 2 bits to hold the set.</p>
+<table>
+<thead>
+<tr>
+<th>Microinstruction</th>
+<th>Opcode (binary)</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>rpc</td>
+<td>01</td>
+<td>Reset the Program Counter to default value.</td>
+</tr>
+<tr>
+<td>lpc</td>
+<td>10</td>
+<td>Load a value from the bus into the Program Counter</td>
+</tr>
+<tr>
+<td>lzpc</td>
+<td>11</td>
+<td>Load a value from the bus into the Program Counter if the zero flag is raised.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="edi">EDI</h2>
+<p>1 bit representing the end of an instruction in the Microinstruction Lookup table.</p>
+<table>
+<thead>
+<tr>
+<th>Microinstruction</th>
+<th>Opcode (binary)</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>edi</td>
+<td>1</td>
+<td>Represents the end instruction processing.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="alu">ALU</h2>
+<p>4 bits including microcode instructions to perform ALU operations.</p>
+<table>
+<thead>
+<tr>
+<th>Microinstruction</th>
+<th>Opcode (binary)</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>raa</td>
+<td>0001</td>
+<td>Read output of logical AND operation.</td>
+</tr>
+<tr>
+<td>rao</td>
+<td>0010</td>
+<td>Read output of logical OR operation.</td>
+</tr>
+<tr>
+<td>rsl</td>
+<td>0011</td>
+<td>Read output of logical shift left operation.</td>
+</tr>
+<tr>
+<td>rsr</td>
+<td>0100</td>
+<td>Read output of logical shift right operation.</td>
+</tr>
+<tr>
+<td>rrl</td>
+<td>0101</td>
+<td>Read output of logical rotate left operation.</td>
+</tr>
+<tr>
+<td>rrr</td>
+<td>0110</td>
+<td>Read output of logical rotate right operation.</td>
+</tr>
+<tr>
+<td>rac</td>
+<td>0111</td>
+<td>Read output of add with carry operation.</td>
+</tr>
+<tr>
+<td>rsc</td>
+<td>1000</td>
+<td>Read output of subtract operation.</td>
+</tr>
+<tr>
+<td>ria</td>
+<td>1001</td>
+<td>Read output of increment Accumulator operation.</td>
+</tr>
+<tr>
+<td>rix</td>
+<td>1010</td>
+<td>Read output of increment X Register operation.</td>
+</tr>
+<tr>
+<td>riy</td>
+<td>1011</td>
+<td>Read output of increment Y Register operation.</td>
+</tr>
+<tr>
+<td>rip</td>
+<td>1100</td>
+<td>Read output of increment Page Register operation.</td>
+</tr>
+<tr>
+<td>ran</td>
+<td>1101</td>
+<td>Read output of logical NOT operation.</td>
+</tr>
+<tr>
+<td>rdp</td>
+<td>1110</td>
+<td>Read output of decrement Page Register operation.</td>
+</tr>
+<tr>
+<td>msp</td>
+<td>1111</td>
+<td>Change the mode of the stack pointer from increment to decrement.</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>
