@@ -19,14 +19,14 @@ The Page Register holds the amount of pages to jump when using the JMPP instruct
 ## Instruction Register
 The Instruction Register holds the opcode of the instruction currently being processed. Once the end of an instruction is reached, the Instruction Register is reset and ready to be written to. The Instruction Register can only be read into the Instruction Decoder.
 
->NEED IMAGE
+![Instruction Register](imgs/ir.png)
 
 ## Flag Register
 The Flag Register is simply a 5-bit integer that holds the which flags are currently being raised during CPU processing.
 
-> NEED IMAGE
+![Flag Register](imgs/fl.png)
 
 ## MAR (Memory Address Register)
 The Memory Address Register (MAR) is a register that holds the memory address to return back to during non-immediate addressing modes. Essentially, the MAR tells the PC where to return to after we have used the data we need at an indirect address.
 
-> NEED IMAGE
+![Memory Address Register](imgs/MAR.png)

@@ -485,7 +485,7 @@ Push the value at register Y onto the stack.
 - Negative: No change.
 
 ## PSHA
-Push the value at register X onto the stack.
+Push the value stored by the Accumulator onto the stack.
 
 | Addressing Mode | Opcode | Cycle Cost |
 |---|---|---|
