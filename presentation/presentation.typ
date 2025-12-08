@@ -188,8 +188,6 @@
     #cols(columns: (7fr, 3fr))[
       - Handles arithmetic and logical operations in the CPU
       \
-      - Uses Carry-Lookahead Addition
-      \
       - Two-operand operations _always_ use Accumulator
       \
       - Intermediate operations sent to Accumulator
