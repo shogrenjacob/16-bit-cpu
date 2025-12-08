@@ -25,7 +25,7 @@
       #align(top)[
         - Von Neumann Architecture
         \
-        - 65,535 memory addresses (255 per page)
+        - 65,535 memory addresses
         \
         - 7 Registers, 5 Flags
         \
@@ -53,7 +53,7 @@
       \
       \
       \
-      
+
       - Free Memory (0x100 $arrow$ 0xffff)
       \
       \
@@ -155,7 +155,7 @@
       
       STA PageAhead (0x5200)
 
-      ADC Absolute (0x453)
+      ADC Absolute (0x4530)
 
       JMP Indirect (0x7660)
 
