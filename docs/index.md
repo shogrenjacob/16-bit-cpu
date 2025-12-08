@@ -16,7 +16,6 @@ The features of the Guin-16 CPU are as follows:
 * 5 flags (Zero, Carry, Overflow, Parity, Negative)
 * [Two's Complement](https://en.wikipedia.org/wiki/Two%27s_complement) number system
 * 7 Registers (X, Y, Accumulator, Page, Instruction, Flag, MAR)
-* [Carry-lookahead addition](https://en.wikipedia.org/wiki/Carry-lookahead_adder)
 
 ## Guin-16 Circuit Components
 
