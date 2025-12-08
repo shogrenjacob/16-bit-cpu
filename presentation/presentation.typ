@@ -49,16 +49,17 @@
 #slide(title: "Memory", outlined: true)[
   #cols(columns: (5fr, 5fr))[
     #align(top)[
-      - Stack Memory (0x00 $arrow$ 0xfe)
+      - Stack Memory (0x00 $arrow$ 0xff)
       \
-      - Free Memory (0xff $arrow$ 0xfffc)
       \
-      - Reset Vector (0xfffd $arrow$ 0xffff)
+      \
+      
+      - Free Memory (0x100 $arrow$ 0xffff)
       \
       \
       \
 
-      #image("imgs/mem-layout-svg.svg", width: 140%)
+      #image("imgs/revised-mem.svg", width: 140%)
     ]
   ][
     #align(top)[
