@@ -125,6 +125,9 @@
       <a name="fanout" val="5"/>
       <a name="incoming" val="5"/>
     </comp>
+    <comp lib="0" loc="(1090,30)" name="Constant">
+      <a name="width" val="16"/>
+    </comp>
     <comp lib="0" loc="(1110,2110)" name="Pull Resistor"/>
     <comp lib="0" loc="(1120,1490)" name="Tunnel">
       <a name="label" val="MI_STRING"/>
@@ -1504,6 +1507,9 @@
     <comp lib="2" loc="(890,290)" name="Multiplexer">
       <a name="width" val="16"/>
     </comp>
+    <comp lib="3" loc="(1190,40)" name="Adder">
+      <a name="width" val="16"/>
+    </comp>
     <comp lib="3" loc="(170,1130)" name="Comparator">
       <a name="width" val="11"/>
     </comp>
@@ -1764,6 +1770,7 @@ c0 1840 10 74*0 6a80 1847 7800 340
     <wire from="(1080,100)" to="(1080,130)"/>
     <wire from="(1080,130)" to="(1110,130)"/>
     <wire from="(1080,2110)" to="(1110,2110)"/>
+    <wire from="(1090,30)" to="(1150,30)"/>
     <wire from="(1100,2220)" to="(1130,2220)"/>
     <wire from="(1100,2430)" to="(1100,2450)"/>
     <wire from="(1100,2430)" to="(1150,2430)"/>
@@ -1785,8 +1792,10 @@ c0 1840 10 74*0 6a80 1847 7800 340
     <wire from="(1140,130)" to="(1140,200)"/>
     <wire from="(1140,200)" to="(1140,290)"/>
     <wire from="(1140,200)" to="(1390,200)"/>
+    <wire from="(1140,50)" to="(1140,70)"/>
+    <wire from="(1140,50)" to="(1150,50)"/>
     <wire from="(1140,70)" to="(1140,130)"/>
-    <wire from="(1140,70)" to="(1270,70)"/>
+    <wire from="(1190,40)" to="(1250,40)"/>
     <wire from="(1190,830)" to="(1220,830)"/>
     <wire from="(120,1080)" to="(220,1080)"/>
     <wire from="(1200,2130)" to="(1210,2130)"/>
@@ -1797,6 +1806,8 @@ c0 1840 10 74*0 6a80 1847 7800 340
     <wire from="(1240,2230)" to="(1240,2250)"/>
     <wire from="(1240,2230)" to="(1290,2230)"/>
     <wire from="(1250,250)" to="(1310,250)"/>
+    <wire from="(1250,40)" to="(1250,70)"/>
+    <wire from="(1250,70)" to="(1270,70)"/>
     <wire from="(1260,220)" to="(1270,220)"/>
     <wire from="(1260,290)" to="(1270,290)"/>
     <wire from="(1260,750)" to="(1260,790)"/>
