@@ -10,7 +10,7 @@ Once the circuit loads, you can run a program by right clicking on the RAM compo
 
 ![RAM Dropdown](imgs/RAM-dropdown.png)
 
-This will open a large file of hex values, but at the bottom there is an open button to select a pre-defined file to run. I have made some tests and a program named _fib.txt_ that calculates the 8th value in the [Fibonacci Sequence](https://en.wikipedia.org/wiki/Fibonacci_sequence). You can also create your own programs using the Opcodes from the [Instruction Set](instruction-set.md).
+This will open a large file of hex values, but at the bottom there is an open button to select a pre-defined file to run. I have made some tests and a program named _fib.txt_ that calculates the 19th value in the [Fibonacci Sequence](https://en.wikipedia.org/wiki/Fibonacci_sequence). You can also create your own programs using the Opcodes from the [Instruction Set](instruction-set.md).
 
 Once you've loaded your program into RAM, click the _Simulate_ tab on the left side of the screen and click the middle option of the five clock options at the top of the menu. This will run the program in real time, and at a pretty quick pace. If you would like to step through the program one clock tick at a time, you can click the fourth option of the menu, which will progress the CPU by one clock tick.
 
